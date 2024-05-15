@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="MailKit" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
@@ -18,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Tenge.DataAccess\Tenge.DataAccess.csproj" />
     <ProjectReference Include="..\Tenge.Domain\Tenge.Domain.csproj" />
+    <ProjectReference Include="..\Tenge.WebApi\Tenge.WebApi.csproj" />
   </ItemGroup>
 
 </Project>
