@@ -3,7 +3,7 @@ using Tenge.Domain.Entities;
 using Tenge.Service.Configurations;
 using Tenge.WebApi.Models.Assets;
 
-namespace Tenge.Service.Services.Service;
+namespace Tenge.Service.Assets.Service;
 
 public interface IAssetService
 {

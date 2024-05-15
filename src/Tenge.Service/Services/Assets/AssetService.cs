@@ -6,7 +6,7 @@ using Tenge.Service.Extensions;
 using Tenge.Service.Helpers;
 using Tenge.WebApi.Models.Assets;
 
-namespace Tenge.Service.Services.Service;
+namespace Tenge.Service.Assets.Service;
 
 public class AssetService(IUnitOfWork unitOfWork, IMapper mapper) : IAssetService
 {
