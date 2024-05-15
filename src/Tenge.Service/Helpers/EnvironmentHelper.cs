@@ -1,4 +1,4 @@
-﻿namespace Arcana.Service.Helpers;
+﻿namespace Tenge.Service.Helpers;
 
 public class EnvironmentHelper
 {

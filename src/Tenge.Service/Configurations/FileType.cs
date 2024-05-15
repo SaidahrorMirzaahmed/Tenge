@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Arcana.Service.Configurations;
+namespace Tenge.Service.Configurations;
 
 [JsonConverter(typeof(EnumStringConverter))]
 public enum FileType

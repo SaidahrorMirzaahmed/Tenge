@@ -1,4 +1,4 @@
-﻿namespace Arcana.Domain.Commons;
+﻿namespace Tenge.Domain.Commons;
 
 public abstract class Auditable
 {

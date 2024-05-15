@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Tenge.Domain.Entities;
 
 namespace Tenge.DataAccess.Contexts;
 
@@ -14,4 +10,9 @@ public class AppDbContext : DbContext
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
 
+    public DbSet<Asset> Assets { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Collection> Collections { get; set; }
+    public DbSet<Item> Items { get; set; }
+    public DbSet<User> Users { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿using Arcana.Service.Helpers;
+﻿using Tenge.Service.Helpers;
 
 namespace Arcana.Service.Configurations;
 

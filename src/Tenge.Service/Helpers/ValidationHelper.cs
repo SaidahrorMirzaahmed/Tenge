@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Arcana.Service.Helpers;
+namespace Tenge.Service.Helpers;
 
 public static class ValidationHelper
 {

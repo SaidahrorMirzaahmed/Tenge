@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Tenge.DataAccess\Tenge.DataAccess.csproj" />
     <ProjectReference Include="..\Tenge.Domain\Tenge.Domain.csproj" />
   </ItemGroup>
 

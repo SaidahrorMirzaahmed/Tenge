@@ -1,4 +1,4 @@
-﻿namespace Arcana.Service.Exceptions;
+﻿namespace Tenge.Service.Exceptions;
 
 public class AlreadyExistException : Exception
 {

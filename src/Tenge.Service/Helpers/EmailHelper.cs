@@ -3,7 +3,7 @@ using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
 
-namespace Arcana.Service.Helpers;
+namespace Tenge.Service.Helpers;
 
 public class EmailHelper
 {

@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using Tenge.Domain.Entities;
 
-namespace Arcana.Service.Helpers;
+namespace Tenge.Service.Helpers;
 
 public class AuthHelper
 {

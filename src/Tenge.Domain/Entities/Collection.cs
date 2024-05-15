@@ -1,21 +1,16 @@
-﻿using Arcana.Domain.Commons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Tenge.Domain.Commons;
 
 namespace Tenge.Domain.Entities;
 
 public class Collection : Auditable
 {
-    public string Name {  get; set; }
-    public string Description {  get; set; }
-    public long PictureId {  get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public long PictureId { get; set; }
     public Asset Picture { get; set; }
-    public long UserId {  get; set; }
+    public long UserId { get; set; }
     public User User { get; set; }
-    public long CategoryId {  get; set; }
+    public long CategoryId { get; set; }
     public Category Category { get; set; }
     public string? CustomString1 { get; set; }
     public string? CustomString2 { get; set; }

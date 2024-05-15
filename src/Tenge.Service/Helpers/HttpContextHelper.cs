@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Arcana.Service.Helpers;
+namespace Tenge.Service.Helpers;
 
 public static class HttpContextHelper
 {

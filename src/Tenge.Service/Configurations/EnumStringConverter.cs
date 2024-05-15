@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Arcana.Service.Configurations;
+namespace Tenge.Service.Configurations;
 
 public class EnumStringConverter : StringEnumConverter
 {

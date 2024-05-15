@@ -1,4 +1,4 @@
-﻿namespace Arcana.Service.Configurations;
+﻿namespace Tenge.Service.Configurations;
 
 public class PaginationMetaData
 {
