@@ -1,4 +1,6 @@
-﻿namespace Tenge.Service.Configurations;
+﻿using Tenge.WebApi.Configurations;
+
+namespace Tenge.Service.Configurations;
 
 public class PaginationMetaData
 {

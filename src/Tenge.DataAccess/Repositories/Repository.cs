@@ -1,7 +1,7 @@
-﻿using Arcana.Domain.Commons;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using Tenge.DataAccess.Contexts;
+using Tenge.Domain.Commons;
 
 namespace Tenge.DataAccess.Repositories;
 
@@ -17,13 +17,14 @@ public class Repository<T> : IRepository<T> where T : Auditable
 
     public async ValueTask<T> InsertAsync(T entity)
     {
+        entity.CreatedAt = DateTime.UtcNow;
         return (await set.AddAsync(entity)).Entity;
     }
 
-    public async ValueTask BulkInsertAsync(IEnumerable<T> entities)
-    {
-        await context.BulkInsertAsync(entities);
-    }
+    //public async ValueTask BulkInsertAsync(IEnumerable<T> entities)
+    //{
+    //    await context.BulkInsertAsync(entities);
+    //}
 
     public async ValueTask<T> UpdateAsync(T entity)
     {
@@ -32,14 +33,14 @@ public class Repository<T> : IRepository<T> where T : Auditable
         return await Task.FromResult(entity);
     }
 
-    public async ValueTask BulkUpdateAsync(IEnumerable<T> entities)
-    {
-        await context.BulkUpdateAsync(entities.Select(entity =>
-            {
-                entity.UpdatedAt = DateTime.UtcNow;
-                return entity;
-            }));
-    }
+    //public async ValueTask BulkUpdateAsync(IEnumerable<T> entities)
+    //{
+    //    await context.BulkUpdateAsync(entities.Select(entity =>
+    //        {
+    //            entity.UpdatedAt = DateTime.UtcNow;
+    //            return entity;
+    //        }));
+    //}
 
     public async ValueTask<T> DeleteAsync(T entity)
     {
@@ -49,25 +50,25 @@ public class Repository<T> : IRepository<T> where T : Auditable
         return await Task.FromResult(entity);
     }
 
-    public async ValueTask BulkDeleteAsyn(IEnumerable<T> entities)
-    {
-        await context.BulkUpdateAsync(entities.Select(entity =>
-            {
-                entity.DeletedAt = DateTime.UtcNow;
-                entity.IsDeleted = true;
-                return entity;
-            }));
-    }
+    //public async ValueTask BulkDeleteAsyn(IEnumerable<T> entities)
+    //{
+    //    await context.BulkUpdateAsync(entities.Select(entity =>
+    //        {
+    //            entity.DeletedAt = DateTime.UtcNow;
+    //            entity.IsDeleted = true;
+    //            return entity;
+    //        }));
+    //}
 
     public async ValueTask<T> DropAsync(T entity)
     {
         return await Task.FromResult(set.Remove(entity).Entity);
     }
 
-    public async ValueTask BulkDropAsync(IEnumerable<T> entities)
-    {
-        await context.BulkDeleteAsync(entities);
-    }
+    //public async ValueTask BulkDropAsync(IEnumerable<T> entities)
+    //{
+    //    await context.BulkDeleteAsync(entities);
+    //}
 
     public async ValueTask<T> SelectAsync(Expression<Func<T, bool>> expression, string[] includes = null)
     {

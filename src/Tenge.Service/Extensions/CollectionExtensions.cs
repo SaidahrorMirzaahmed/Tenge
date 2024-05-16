@@ -1,8 +1,9 @@
-﻿using Arcana.Service.Configurations;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Linq.Expressions;
 using Tenge.Service.Configurations;
+using Tenge.Service.Exceptions;
 using Tenge.Service.Helpers;
+using Tenge.WebApi.Configurations;
 
 namespace Arcana.Service.Extensions;
 

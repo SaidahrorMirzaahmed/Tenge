@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Tenge.Domain.Entities;
+using Tenge.WebApi.Configurations;
 
 namespace Tenge.Service.Helpers;
 

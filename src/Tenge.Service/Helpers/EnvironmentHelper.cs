@@ -1,4 +1,4 @@
-﻿namespace Tenge.Service.Helpers;
+﻿namespace Tenge.WebApi.Configurations;
 
 public class EnvironmentHelper
 {

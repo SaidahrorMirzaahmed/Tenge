@@ -27,5 +27,4 @@ public static class AuditableExtension
         auditable.DeletedAt = DateTime.UtcNow;
         auditable.DeletedByUserId = HttpContextHelper.UserId;
     }
-}{
 }

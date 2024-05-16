@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Tenge.Domain.Entities;
-using Tenge.Service.Configurations;
-using Tenge.WebApi.Models.Assets;
+﻿using Tenge.WebApi.Models.Assets;
 
 namespace Tenge.Service.Assets.Service;
 

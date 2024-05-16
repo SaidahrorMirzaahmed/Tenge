@@ -1,6 +1,4 @@
-﻿using Tenge.Service.Helpers;
-
-namespace Arcana.Service.Configurations;
+﻿namespace Tenge.WebApi.Configurations;
 
 public class PaginationParams
 {
