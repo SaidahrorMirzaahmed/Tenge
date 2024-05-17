@@ -31,7 +31,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
 
     public async ValueTask<Collection> Get(int id)
     {
-        var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id)
+        var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id, includes: ["Picture", "User", "Category"])
             ?? throw new NotFoundException($"Collection with this Id is not found Id= {id}");
 
         return existCollection;
@@ -40,7 +40,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
     public async ValueTask<IEnumerable<Collection>> GetAll(PaginationParams @params, Filter filter, string search = null)
     {
         var categories = unitOfWork.Collections
-           .SelectAsQueryable(expression: user => !user.IsDeleted, isTracked: false)
+           .SelectAsQueryable(expression: user => !user.IsDeleted, isTracked: false, includes: ["Picture", "User", "Category"])
            .OrderBy(filter);
 
         if (!string.IsNullOrEmpty(search))
@@ -52,7 +52,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
 
     public async ValueTask<Collection> Update(long id, Collection collection)
     {
-        var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id)
+        var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id, includes: ["Picture", "User", "Category"])
            ?? throw new NotFoundException($"Collection with this Id is not found Id= {id}");
 
         existCollection.UpdatedByUserId = HttpContextHelper.UserId;

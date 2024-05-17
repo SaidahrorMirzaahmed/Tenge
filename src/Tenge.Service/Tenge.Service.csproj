@@ -19,7 +19,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Tenge.DataAccess\Tenge.DataAccess.csproj" />
     <ProjectReference Include="..\Tenge.Domain\Tenge.Domain.csproj" />
-    <ProjectReference Include="..\Tenge.WebApi\Tenge.WebApi.csproj" />
   </ItemGroup>
 
 </Project>
