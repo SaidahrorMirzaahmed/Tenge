@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Tenge.Domain\Tenge.Domain.csproj" />
-	  Tenge.Service.Services.Users;
     <ProjectReference Include="..\Tenge.Service\Tenge.Service.csproj" />
   </ItemGroup>
 
