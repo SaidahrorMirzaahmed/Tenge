@@ -11,14 +11,14 @@ namespace Tenge.Service.Services.Collections;
 
 public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
 {
-    public async ValueTask<Collection> Create(Collection collection)
+    public async ValueTask<Collection> CreateAsync(Collection collection)
     {
         collection.CreatedByUserId = HttpContextHelper.UserId;
         var createdCollection = await unitOfWork.Collections.InsertAsync(collection);
         return createdCollection;
     }
 
-    public async ValueTask<bool> Delete(long id)
+    public async ValueTask<bool> DeleteAsync(long id)
     {
         var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id)
             ?? throw new NotFoundException($"Collection with this Id is not found Id= {id}");
@@ -29,7 +29,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
         return true;
     }
 
-    public async ValueTask<Collection> Get(int id)
+    public async ValueTask<Collection> GetAsync(long id)
     {
         var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id, includes: ["Picture", "User", "Category"])
             ?? throw new NotFoundException($"Collection with this Id is not found Id= {id}");
@@ -37,7 +37,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
         return existCollection;
     }
 
-    public async ValueTask<IEnumerable<Collection>> GetAll(PaginationParams @params, Filter filter, string search = null)
+    public async ValueTask<IEnumerable<Collection>> GetAllAsync(PaginationParams @params, Filter filter, string search = null)
     {
         var categories = unitOfWork.Collections
            .SelectAsQueryable(expression: user => !user.IsDeleted, isTracked: false, includes: ["Picture", "User", "Category"])
@@ -50,7 +50,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
         return await categories.ToPaginateAsQueryable(@params).ToListAsync();
     }
 
-    public async ValueTask<Collection> Update(long id, Collection collection)
+    public async ValueTask<Collection> UpdateAsync(long id, Collection collection)
     {
         var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id, includes: ["Picture", "User", "Category"])
            ?? throw new NotFoundException($"Collection with this Id is not found Id= {id}");

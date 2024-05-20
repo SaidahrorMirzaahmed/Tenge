@@ -6,10 +6,10 @@ namespace Tenge.Service.Services.Collections;
 
 public interface ICollectionService
 {
-    ValueTask<Collection> Create(Collection collection);
-    ValueTask<Collection> Update(long id, Collection collection);
-    ValueTask<bool> Delete(long id);
-    ValueTask<Collection> Get(int id);
-    ValueTask<IEnumerable<Collection>> GetAll(PaginationParams @params, Filter filter, string search = null);
+    ValueTask<Collection> CreateAsync(Collection collection);
+    ValueTask<Collection> UpdateAsync(long id, Collection collection);
+    ValueTask<bool> DeleteAsync(long id);
+    ValueTask<Collection> GetAsync(long id);
+    ValueTask<IEnumerable<Collection>> GetAllAsync(PaginationParams @params, Filter filter, string search = null);
 }
 
