@@ -1,6 +1,4 @@
-﻿using Arcana.Service.Helpers;
-using Arcana.WebApi.Models.Users;
-using FluentValidation;
+﻿using FluentValidation;
 using Tenge.Service.Helpers;
 using Tenge.WebApi.Models.Users;
 

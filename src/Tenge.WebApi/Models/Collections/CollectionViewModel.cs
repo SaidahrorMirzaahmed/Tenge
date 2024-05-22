@@ -1,5 +1,6 @@
 ﻿using Tenge.Domain.Entities;
 using Tenge.WebApi.Models.Assets;
+using Tenge.WebApi.Models.Category;
 using Tenge.WebApi.Models.Users;
 
 namespace Tenge.WebApi.Models.Collections;

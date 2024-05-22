@@ -2,6 +2,7 @@
 using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
+using Tenge.WebApi.Configurations;
 
 namespace Tenge.Service.Helpers;
 

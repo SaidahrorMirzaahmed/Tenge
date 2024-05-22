@@ -5,7 +5,7 @@ using Tenge.WebApi.Models.Users;
 
 namespace Tenge.WebApi.ApiServices.Categories;
 
-public interface ICategoriesApiService
+public interface ICategoryApiService
 {
     ValueTask<CategoryViewModel> PostAsync(CategoryCreateModel createModel);
     ValueTask<CategoryViewModel> PutAsync(long id, CategoryUpdateModel createModel);

@@ -9,10 +9,10 @@ using Tenge.WebApi.Validators.Categories;
 
 namespace Tenge.WebApi.ApiServices.Categories;
 
-public class CategoriesApiService(IMapper mapper,
+public class CategoryApiService(IMapper mapper,
     ICategoryService service,
     CategoryCreateModelValidator validations,
-    CategoryUpdateModelValidator validationRules) : ICategoriesApiService
+    CategoryUpdateModelValidator validationRules) : ICategoryApiService
 {
     public async ValueTask<bool> DeleteAsync(long id)
     {

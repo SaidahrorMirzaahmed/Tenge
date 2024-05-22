@@ -27,7 +27,7 @@ public class UserApiService(
         return mapper.Map<UserViewModel>(user);
     }
 
-    public async ValueTask<IEnumerable<UserViewModel>> GetAsync(PaginationParams @params, Filter filter, string search = null)
+    public async ValueTask<IEnumerable<UserViewModel>> GetAllAsync(PaginationParams @params, Filter filter, string search = null)
     {
         var users = await userService.GetAllAsync(@params, filter, search);
         return mapper.Map<IEnumerable<UserViewModel>>(users);
