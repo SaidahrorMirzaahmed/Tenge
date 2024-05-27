@@ -6,8 +6,8 @@ public class Collection : Auditable
 {
     public string Name { get; set; }
     public string Description { get; set; }
-    public long PictureId { get; set; }
-    public Asset Picture { get; set; }
+    public long? PictureId { get; set; }
+    public Asset? Picture { get; set; }
     public long UserId { get; set; }
     public User User { get; set; }
     public long CategoryId { get; set; }

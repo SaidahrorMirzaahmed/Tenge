@@ -22,7 +22,7 @@ public class CollectionApiService(
 
     public async ValueTask<IEnumerable<CollectionViewModel>> GetAllAsync(PaginationParams @params, Filter filter, string search = null)
     {
-        var res = service.GetAllAsync(@params, filter, search);
+        var res = await service.GetAllAsync(@params, filter, search);
         return mapper.Map<IEnumerable<CollectionViewModel>>(res);
     }
 

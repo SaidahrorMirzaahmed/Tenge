@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Tenge.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class Post : Migration
+    public partial class MadePictureEntityOPtional : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -85,7 +85,7 @@ namespace Tenge.DataAccess.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    PictureId = table.Column<long>(type: "bigint", nullable: false),
+                    PictureId = table.Column<long>(type: "bigint", nullable: true),
                     UserId = table.Column<long>(type: "bigint", nullable: false),
                     CategoryId = table.Column<long>(type: "bigint", nullable: false),
                     CustomString1 = table.Column<string>(type: "text", nullable: true),
@@ -112,8 +112,7 @@ namespace Tenge.DataAccess.Migrations
                         name: "FK_Collections_Assets_PictureId",
                         column: x => x.PictureId,
                         principalTable: "Assets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Collections_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -137,7 +136,7 @@ namespace Tenge.DataAccess.Migrations
                     Name = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
                     CollectionId = table.Column<long>(type: "bigint", nullable: false),
-                    PictureId = table.Column<long>(type: "bigint", nullable: false),
+                    PictureId = table.Column<long>(type: "bigint", nullable: true),
                     CustomString1Value = table.Column<string>(type: "text", nullable: true),
                     CustomString2Value = table.Column<string>(type: "text", nullable: true),
                     CustomString3Value = table.Column<string>(type: "text", nullable: true),
@@ -162,8 +161,7 @@ namespace Tenge.DataAccess.Migrations
                         name: "FK_Items_Assets_PictureId",
                         column: x => x.PictureId,
                         principalTable: "Assets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Items_Collections_CollectionId",
                         column: x => x.CollectionId,

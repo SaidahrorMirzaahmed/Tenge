@@ -20,6 +20,7 @@ public class ItemService(IUnitOfWork unitOfWork) : IItemService
         {
             item.CreatedByUserId = HttpContextHelper.UserId;
             var createdItem = await unitOfWork.Items.InsertAsync(item);
+            await unitOfWork.SaveAsync();
             return createdItem;
         }
         else
@@ -38,6 +39,7 @@ public class ItemService(IUnitOfWork unitOfWork) : IItemService
         {
             item.DeletedByUserId = HttpContextHelper.UserId;
             await unitOfWork.Items.DeleteAsync(item);
+            await unitOfWork.SaveAsync();
             return true;
         }
         else
@@ -87,6 +89,8 @@ public class ItemService(IUnitOfWork unitOfWork) : IItemService
             existItem.CustomDate1Value = item.CustomDate1Value;
             existItem.CustomDate2Value = item.CustomDate2Value;
             existItem.CustomDate3Value = item.CustomDate3Value;
+
+            await unitOfWork.SaveAsync();
 
             return existItem;
         }

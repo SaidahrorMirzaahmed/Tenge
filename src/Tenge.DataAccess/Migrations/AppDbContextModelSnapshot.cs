@@ -158,7 +158,7 @@ namespace Tenge.DataAccess.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<long>("PictureId")
+                    b.Property<long?>("PictureId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -240,7 +240,7 @@ namespace Tenge.DataAccess.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<long>("PictureId")
+                    b.Property<long?>("PictureId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -317,9 +317,7 @@ namespace Tenge.DataAccess.Migrations
 
                     b.HasOne("Tenge.Domain.Entities.Asset", "Picture")
                         .WithMany()
-                        .HasForeignKey("PictureId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PictureId");
 
                     b.HasOne("Tenge.Domain.Entities.User", "User")
                         .WithMany()
@@ -344,9 +342,7 @@ namespace Tenge.DataAccess.Migrations
 
                     b.HasOne("Tenge.Domain.Entities.Asset", "Picture")
                         .WithMany()
-                        .HasForeignKey("PictureId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PictureId");
 
                     b.Navigation("Collection");
 

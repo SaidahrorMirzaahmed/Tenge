@@ -85,4 +85,17 @@ public class UsersController(IUserApiService service) : BaseController
             Data = await service.GetAllAsync(@params, filter, search)
         });
     }
+
+    [CustomAuthorize(nameof(UserRole.Admin))]
+    [HttpPatch]
+    public async ValueTask<IActionResult> QuitAdmin()
+    {
+        return Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Ok",
+            Data = await service.QuitAdminAsync()
+        });
+    }
+
 }

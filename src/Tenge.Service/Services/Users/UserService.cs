@@ -169,5 +169,20 @@ public class UserService(IUnitOfWork unitOfWork, IMemoryCache memoryCache) : IUs
         return true;
     }
 
+    public async ValueTask<bool> QuitAdminAsync()
+    {
+        var existUser =await unitOfWork.Users.SelectAsync(u => u.Id == HttpContextHelper.UserId);
+        existUser.Role = Domain.Enums.UserRole.NonAdmin;
+        await unitOfWork.SaveAsync();
+        return true;
+    }
+    //private async Task LogoutUserAndRefreshTokenAsync(User existUser)
+    //{
+    //    // Generate a new token for the user with the updated role
+    //    var newToken = AuthHelper.GenerateToken(existUser);
+
+    //    // Update the user's token in the application state
+    //    UpdateUserToken(existUser, newToken);
+    //}
 }
 

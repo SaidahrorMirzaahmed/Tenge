@@ -60,4 +60,10 @@ public class UserApiService(
             .ChangePasswordAsync(changePasswordModel.Email, changePasswordModel.OldPassword, changePasswordModel.NewPassword);
         return mapper.Map<UserViewModel>(user);
     }
+
+    public async ValueTask<bool> QuitAdminAsync()
+    {
+        await userService.QuitAdminAsync();
+        return true;
+    }
 }

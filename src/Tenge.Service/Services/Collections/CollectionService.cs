@@ -22,6 +22,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
         collection.User = user;
 
         var createdCollection = await unitOfWork.Collections.InsertAsync(collection);
+        await unitOfWork.SaveAsync();
         return collection;
     }
 
@@ -34,6 +35,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
         {
             existCollection.DeletedByUserId = HttpContextHelper.UserId;
             await unitOfWork.Collections.DeleteAsync(existCollection);
+            await unitOfWork.SaveAsync();
             return true;
         }
         else 
@@ -85,6 +87,7 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
             existCollection.CustomString3 = collection.CustomString3;
             existCollection.CustomString1 = collection.CustomString1;
             existCollection.UpdatedByUserId = HttpContextHelper.UserId;
+            await unitOfWork.SaveAsync();
 
             return existCollection;
         }
