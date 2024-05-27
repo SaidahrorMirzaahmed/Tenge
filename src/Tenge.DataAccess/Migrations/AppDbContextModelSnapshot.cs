@@ -189,6 +189,9 @@ namespace Tenge.DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<long>("CollectionId")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
 
@@ -247,6 +250,8 @@ namespace Tenge.DataAccess.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CollectionId");
 
                     b.HasIndex("PictureId");
 
@@ -331,11 +336,19 @@ namespace Tenge.DataAccess.Migrations
 
             modelBuilder.Entity("Tenge.Domain.Entities.Item", b =>
                 {
+                    b.HasOne("Tenge.Domain.Entities.Collection", "Collection")
+                        .WithMany()
+                        .HasForeignKey("CollectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Tenge.Domain.Entities.Asset", "Picture")
                         .WithMany()
                         .HasForeignKey("PictureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Collection");
 
                     b.Navigation("Picture");
                 });

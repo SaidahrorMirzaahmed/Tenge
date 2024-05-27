@@ -27,22 +27,24 @@ public class CollectionsController(ICollectionApiService service) : BaseControll
     [HttpPut("{id:long}")]
     public async ValueTask<IActionResult> PutAsync(long id, CollectionUpdateModel updateModel)
     {
+        var isAdmin = new CustomAuthorize().IsUserAdmin(HttpContext.User);
         return Ok(new Response
         {
             StatusCode = 200,
             Message = "Ok",
-            Data = await service.PutAsync(id, updateModel)
+            Data = await service.PutAsync(id, updateModel, isAdmin)
         });
     }
 
     [HttpDelete("{id:long}")]
     public async ValueTask<IActionResult> DeleteAsync(long id)
     {
+        var isAdmin = new CustomAuthorize().IsUserAdmin(HttpContext.User);
         return Ok(new Response
         {
             StatusCode = 200,
             Message = "Ok",
-            Data = await service.DeleteAsync(id)
+            Data = await service.DeleteAsync(id, isAdmin)
         });
     }
 

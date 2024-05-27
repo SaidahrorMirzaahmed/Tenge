@@ -15,9 +15,9 @@ public class CollectionApiService(
     CollectionCreateModelValidator validations,
     CollectionUpdateModelValidator validationRules) : ICollectionApiService 
 {
-    public async ValueTask<bool> DeleteAsync(long id)
+    public async ValueTask<bool> DeleteAsync(long id, bool isAdmin)
     {
-        return await service.DeleteAsync(id);
+        return await service.DeleteAsync(id, isAdmin);
     }
 
     public async ValueTask<IEnumerable<CollectionViewModel>> GetAllAsync(PaginationParams @params, Filter filter, string search = null)
@@ -41,10 +41,10 @@ public class CollectionApiService(
         return mapper.Map<CollectionViewModel>(res);
     }
 
-    public async ValueTask<CollectionViewModel> PutAsync(long id, CollectionUpdateModel updateModel)
+    public async ValueTask<CollectionViewModel> PutAsync(long id, CollectionUpdateModel updateModel, bool isAdmin)
     {
         var model = mapper.Map<Collection>(updateModel);
-        var res = await service.UpdateAsync(id, model);
+        var res = await service.UpdateAsync(id, model, isAdmin);
 
         return mapper.Map<CollectionViewModel>(res);
     }

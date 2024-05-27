@@ -16,33 +16,36 @@ public class ItemsController(IItemApiService service) : BaseController
     [HttpPost]
     public async ValueTask<IActionResult> PostAsync(ItemCreateModel createModel)
     {
+        var isAdmin = new CustomAuthorize().IsUserAdmin(HttpContext.User);
         return Ok(new Response
         {
             StatusCode = 200,
             Message = "Ok",
-            Data = await service.PostAsync(createModel)
+            Data = await service.PostAsync(createModel, isAdmin)
         });
     }
 
     [HttpPut("{id:long}")]
     public async ValueTask<IActionResult> PutAsync(long id, ItemUpdateModel updateModel)
     {
+        var isAdmin = new CustomAuthorize().IsUserAdmin(HttpContext.User);
         return Ok(new Response
         {
             StatusCode = 200,
             Message = "Ok",
-            Data = await service.PutAsync(id, updateModel)
+            Data = await service.PutAsync(id, updateModel, isAdmin)
         });
     }
 
     [HttpDelete("{id:long}")]
     public async ValueTask<IActionResult> DeleteAsync(long id)
     {
+        var isAdmin = new CustomAuthorize().IsUserAdmin(HttpContext.User);
         return Ok(new Response
         {
             StatusCode = 200,
             Message = "Ok",
-            Data = await service.DeleteAsync(id)
+            Data = await service.DeleteAsync(id, isAdmin)
         });
     }
 

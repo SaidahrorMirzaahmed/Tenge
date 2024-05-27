@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Tenge.Service.Exceptions;
 using Tenge.WebApi.Models.Responses;
+using System.Security.Claims;
+using Tenge.Domain.Enums;
 
 public class CustomAuthorize : Attribute, IAuthorizationFilter
 {
@@ -40,5 +42,11 @@ public class CustomAuthorize : Attribute, IAuthorizationFilter
         {
             StatusCode = StatusCodes.Status403Forbidden
         };
+    }
+
+    public bool IsUserAdmin(ClaimsPrincipal user)
+    {
+        var roleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+        return user.Claims.Any(c => c.Type == roleClaimType && c.Value == nameof(UserRole.Admin));
     }
 }

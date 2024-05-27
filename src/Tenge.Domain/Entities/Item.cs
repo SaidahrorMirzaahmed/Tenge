@@ -6,6 +6,8 @@ public class Item : Auditable
 {
     public string Name { get; set; }
     public string Description { get; set; }
+    public long CollectionId {  get; set; }
+    public Collection Collection { get; set; }
     public long PictureId { get; set; }
     public Asset Picture { get; set; }
     public string? CustomString1Value { get; set; }

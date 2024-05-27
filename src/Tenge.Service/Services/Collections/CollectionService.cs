@@ -25,15 +25,21 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
         return collection;
     }
 
-    public async ValueTask<bool> DeleteAsync(long id)
+    public async ValueTask<bool> DeleteAsync(long id, bool isAdmin)
     {
         var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id)
             ?? throw new NotFoundException($"Collection with this Id is not found Id= {id}");
 
-        existCollection.DeletedByUserId = HttpContextHelper.UserId;
-        await unitOfWork.Collections.DeleteAsync(existCollection);
-
-        return true;
+        if(isAdmin || existCollection.UserId == HttpContextHelper.UserId)
+        {
+            existCollection.DeletedByUserId = HttpContextHelper.UserId;
+            await unitOfWork.Collections.DeleteAsync(existCollection);
+            return true;
+        }
+        else 
+        {
+            throw new CustomException("You do not have permission for this method", 403);
+        }
     }
 
     public async ValueTask<Collection> GetAsync(long id)
@@ -57,28 +63,36 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
         return await categories.ToPaginateAsQueryable(@params).ToListAsync();
     }
 
-    public async ValueTask<Collection> UpdateAsync(long id, Collection collection)
+    public async ValueTask<Collection> UpdateAsync(long id, Collection collection, bool isAdmin)
     {
         var existCollection = await unitOfWork.Collections.SelectAsync(c => c.Id == id, includes: ["Picture", "User", "Category"])
            ?? throw new NotFoundException($"Collection with this Id is not found Id= {id}");
 
-        existCollection.UpdatedByUserId = HttpContextHelper.UserId;
+        if (isAdmin || existCollection.UserId == HttpContextHelper.UserId)
+        {
+            existCollection.UpdatedByUserId = HttpContextHelper.UserId;
 
-        existCollection.Name = collection.Name;
-        existCollection.Category = collection.Category;
-        existCollection.Description = collection.Description;
-        existCollection.CustomInt1 = collection.CustomInt1;
-        existCollection.CustomInt2 = collection.CustomInt2;
-        existCollection.CustomInt3 = collection.CustomInt3;
-        existCollection.CustomDate1 = collection.CustomDate1;
-        existCollection.CustomDate2 = collection.CustomDate2;
-        existCollection.CustomDate3 = collection.CustomDate3;
-        existCollection.CustomString2 = collection.CustomString2;
-        existCollection.CustomString3 = collection.CustomString3;
-        existCollection.CustomString1 = collection.CustomString1;
-        existCollection.UpdatedByUserId = HttpContextHelper.UserId;
+            existCollection.Name = collection.Name;
+            existCollection.Category = collection.Category;
+            existCollection.Description = collection.Description;
+            existCollection.CustomInt1 = collection.CustomInt1;
+            existCollection.CustomInt2 = collection.CustomInt2;
+            existCollection.CustomInt3 = collection.CustomInt3;
+            existCollection.CustomDate1 = collection.CustomDate1;
+            existCollection.CustomDate2 = collection.CustomDate2;
+            existCollection.CustomDate3 = collection.CustomDate3;
+            existCollection.CustomString2 = collection.CustomString2;
+            existCollection.CustomString3 = collection.CustomString3;
+            existCollection.CustomString1 = collection.CustomString1;
+            existCollection.UpdatedByUserId = HttpContextHelper.UserId;
 
-        return existCollection;
+            return existCollection;
+        }
+        else
+        {
+            throw new CustomException("You do not have permission for this method", 403);
+        }
+        
     }
 }
 

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Tenge.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class just : Migration
+    public partial class Post : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -78,43 +78,6 @@ namespace Tenge.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Items",
-                columns: table => new
-                {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
-                    PictureId = table.Column<long>(type: "bigint", nullable: false),
-                    CustomString1Value = table.Column<string>(type: "text", nullable: true),
-                    CustomString2Value = table.Column<string>(type: "text", nullable: true),
-                    CustomString3Value = table.Column<string>(type: "text", nullable: true),
-                    CustomInt1Value = table.Column<int>(type: "integer", nullable: true),
-                    CustomInt2Value = table.Column<int>(type: "integer", nullable: true),
-                    CustomInt3Value = table.Column<int>(type: "integer", nullable: true),
-                    CustomDate1Value = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    CustomDate2Value = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    CustomDate3Value = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    UpdatedByUserId = table.Column<long>(type: "bigint", nullable: true),
-                    CreatedByUserId = table.Column<long>(type: "bigint", nullable: false),
-                    DeletedByUserId = table.Column<long>(type: "bigint", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Items", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Items_Assets_PictureId",
-                        column: x => x.PictureId,
-                        principalTable: "Assets",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Collections",
                 columns: table => new
                 {
@@ -165,6 +128,50 @@ namespace Tenge.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    CollectionId = table.Column<long>(type: "bigint", nullable: false),
+                    PictureId = table.Column<long>(type: "bigint", nullable: false),
+                    CustomString1Value = table.Column<string>(type: "text", nullable: true),
+                    CustomString2Value = table.Column<string>(type: "text", nullable: true),
+                    CustomString3Value = table.Column<string>(type: "text", nullable: true),
+                    CustomInt1Value = table.Column<int>(type: "integer", nullable: true),
+                    CustomInt2Value = table.Column<int>(type: "integer", nullable: true),
+                    CustomInt3Value = table.Column<int>(type: "integer", nullable: true),
+                    CustomDate1Value = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CustomDate2Value = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CustomDate3Value = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    UpdatedByUserId = table.Column<long>(type: "bigint", nullable: true),
+                    CreatedByUserId = table.Column<long>(type: "bigint", nullable: false),
+                    DeletedByUserId = table.Column<long>(type: "bigint", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Items_Assets_PictureId",
+                        column: x => x.PictureId,
+                        principalTable: "Assets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Items_Collections_CollectionId",
+                        column: x => x.CollectionId,
+                        principalTable: "Collections",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Collections_CategoryId",
                 table: "Collections",
@@ -181,6 +188,11 @@ namespace Tenge.DataAccess.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Items_CollectionId",
+                table: "Items",
+                column: "CollectionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Items_PictureId",
                 table: "Items",
                 column: "PictureId");
@@ -190,19 +202,19 @@ namespace Tenge.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Items");
+
+            migrationBuilder.DropTable(
                 name: "Collections");
 
             migrationBuilder.DropTable(
-                name: "Items");
+                name: "Assets");
 
             migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Assets");
         }
     }
 }

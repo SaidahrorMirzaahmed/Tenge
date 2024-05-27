@@ -16,9 +16,9 @@ public class ItemApiService(
     ) : IItemApiService
 
 {
-    public async ValueTask<bool> DeleteAsync(long id)
+    public async ValueTask<bool> DeleteAsync(long id, bool isAdmin)
     {
-        return await service.DeleteAsync(id);
+        return await service.DeleteAsync(id, isAdmin);
     }
 
     public async ValueTask<IEnumerable<ItemViewModel>> GetAllAsync(PaginationParams @params, Filter filter, string search = null)
@@ -33,20 +33,20 @@ public class ItemApiService(
         return mapper.Map<ItemViewModel>(res);
     }
 
-    public async ValueTask<ItemViewModel> PostAsync(ItemCreateModel createModel)
+    public async ValueTask<ItemViewModel> PostAsync(ItemCreateModel createModel, bool isAdmin)
     {
         await validations.EnsureValidatedAsync(createModel);
         var model = mapper.Map<Item>(createModel);
-        var createdItem = await service.CreateAsync(model);
+        var createdItem = await service.CreateAsync(model, isAdmin);
 
         return mapper.Map<ItemViewModel>(createdItem);
     }
 
-    public async ValueTask<ItemViewModel> PutAsync(long id, ItemUpdateModel updateModel)
+    public async ValueTask<ItemViewModel> PutAsync(long id, ItemUpdateModel updateModel, bool isAdmin)
     {
         await validationRules.EnsureValidatedAsync(updateModel);
         var model = mapper.Map<Item>(updateModel);
-        var updatedItem = await service.UpdateAsync(id, model);
+        var updatedItem = await service.UpdateAsync(id, model, isAdmin);
 
         return mapper.Map<ItemViewModel>(updatedItem);
     }

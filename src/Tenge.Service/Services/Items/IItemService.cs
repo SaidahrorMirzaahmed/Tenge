@@ -11,9 +11,9 @@ namespace Tenge.Service.Services.Items;
 
 public interface IItemService
 {
-    ValueTask<Item> CreateAsync(Item item);
-    ValueTask<Item> UpdateAsync(long id, Item item);
-    ValueTask<bool> DeleteAsync(long id);
+    ValueTask<Item> CreateAsync(Item item, bool isAdmin);
+    ValueTask<Item> UpdateAsync(long id, Item item, bool isAdmin);
+    ValueTask<bool> DeleteAsync(long id, bool isAdmin);
     ValueTask<Item> GetAsync(long id);
     ValueTask<IEnumerable<Item>> GetAll(PaginationParams @params, Filter filter, string search = null);
 }
