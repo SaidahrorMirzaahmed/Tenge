@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Tenge.WebApi.ApiServices.Accounts;
 using Tenge.WebApi.Models.Accounts;
@@ -6,6 +7,7 @@ using Tenge.WebApi.Models.Responses;
 
 namespace Tenge.WebApi.Controllers;
 
+[EnableCors("AllowSpecificOrigin")]
 [Route("api/[controller]")]
 [ApiController]
 public class AccountsController(IAccountApiService accountApiService) : ControllerBase

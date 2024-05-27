@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Tenge.Domain.Enums;
 using Tenge.Service.Configurations;
 using Tenge.WebApi.ApiServices.Items;
 using Tenge.WebApi.Configurations;
@@ -8,6 +10,7 @@ using Tenge.WebApi.Models.Responses;
 
 namespace Tenge.WebApi.Controllers;
 
+[CustomAuthorize(nameof(UserRole.Admin), nameof(UserRole.NonAdmin))]
 public class ItemsController(IItemApiService service) : BaseController
 {
     [HttpPost]
@@ -43,6 +46,7 @@ public class ItemsController(IItemApiService service) : BaseController
         });
     }
 
+    [AllowAnonymous]
     [HttpGet("{id:long}")]
     public async ValueTask<IActionResult> GetAsync(long id)
     {
@@ -54,6 +58,7 @@ public class ItemsController(IItemApiService service) : BaseController
         });
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async ValueTask<IActionResult> GetAllAsync(
         [FromQuery] PaginationParams @params,

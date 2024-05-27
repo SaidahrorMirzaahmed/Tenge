@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Tenge.Domain.Entities;
 using Tenge.Service.Configurations;
+using Tenge.Service.Helpers;
 using Tenge.Service.Services.Collections;
 using Tenge.WebApi.Configurations;
 using Tenge.WebApi.Models.Collections;
@@ -34,7 +35,8 @@ public class CollectionApiService(
     public async ValueTask<CollectionViewModel> PostAsync(CollectionCreateModel createModel)
     {
         var model = mapper.Map<Collection>(createModel);
-        var res = service.CreateAsync(model);
+        model.UserId = HttpContextHelper.UserId;
+        var res =await service.CreateAsync(model);
 
         return mapper.Map<CollectionViewModel>(res);
     }

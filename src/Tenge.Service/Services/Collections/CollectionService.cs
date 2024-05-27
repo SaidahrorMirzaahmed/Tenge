@@ -13,9 +13,16 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
 {
     public async ValueTask<Collection> CreateAsync(Collection collection)
     {
+        var existCategory = await unitOfWork.Categories.SelectAsync(c => c.Id == collection.CategoryId)
+            ?? throw new NotFoundException($"Category with this id is not found={collection.CategoryId}");
+        var user = await unitOfWork.Users.SelectAsync(c => c.Id == collection.UserId);
+
         collection.CreatedByUserId = HttpContextHelper.UserId;
+        collection.Category = existCategory;
+        collection.User = user;
+
         var createdCollection = await unitOfWork.Collections.InsertAsync(collection);
-        return createdCollection;
+        return collection;
     }
 
     public async ValueTask<bool> DeleteAsync(long id)

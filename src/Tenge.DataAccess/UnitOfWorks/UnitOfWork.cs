@@ -19,11 +19,11 @@ public class UnitOfWork : IUnitOfWork
     public UnitOfWork(AppDbContext context)
     {
         this.context = context;
+        Users = new Repository<User>(this.context);
+        Items = new Repository<Item>(this.context);
         Assets = new Repository<Asset>(this.context);
         Categories = new Repository<Category>(this.context);
         Collections = new Repository<Collection>(this.context);
-        Items = new Repository<Item>(this.context);
-        Users = new Repository<User>(this.context);
     }
     public void Dispose()
     {

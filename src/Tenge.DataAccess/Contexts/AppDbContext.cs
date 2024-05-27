@@ -1,14 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 using Tenge.Domain.Entities;
 
 namespace Tenge.DataAccess.Contexts;
 
 public class AppDbContext : DbContext
 {
+    public AppDbContext()
+    {
+        
+    }
+
     public AppDbContext(DbContextOptions options) : base(options)
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     }
+
+
 
     public DbSet<Asset> Assets { get; set; }
     public DbSet<Category> Categories { get; set; }

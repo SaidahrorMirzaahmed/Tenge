@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.IdentityModel.Tokens;
 using System.Threading;
 using System.Threading.Tasks;
 using Tenge.Service.Services.Collections;
@@ -31,22 +32,22 @@ public class ItemCreateModelValidator : AbstractValidator<ItemCreateModel>
                 if (!string.IsNullOrEmpty(collection.CustomString3) && string.IsNullOrEmpty(item.CustomString3Value))
                     context.AddFailure("CustomString3Value", "CustomString3Value should not be empty if Collection.CustomString3 is not empty.");
 
-                if (collection.CustomInt1.HasValue && !item.CustomInt1Value.HasValue)
+                if (!collection.CustomInt1.IsNullOrEmpty() && !item.CustomInt1Value.HasValue)
                     context.AddFailure("CustomInt1Value", "CustomInt1Value should not be null if Collection.CustomInt1 is not null.");
 
-                if (collection.CustomInt2.HasValue && !item.CustomInt2Value.HasValue)
+                if (!collection.CustomInt2.IsNullOrEmpty() && !item.CustomInt2Value.HasValue)
                     context.AddFailure("CustomInt2Value", "CustomInt2Value should not be null if Collection.CustomInt2 is not null.");
 
-                if (collection.CustomInt3.HasValue && !item.CustomInt3Value.HasValue)
+                if (!collection.CustomInt3.IsNullOrEmpty() && !item.CustomInt3Value.HasValue)
                     context.AddFailure("CustomInt3Value", "CustomInt3Value should not be null if Collection.CustomInt3 is not null.");
 
-                if (collection.CustomDate1.HasValue && !item.CustomDate1Value.HasValue)
+                if (!collection.CustomDate1.IsNullOrEmpty() && !item.CustomDate1Value.HasValue)
                     context.AddFailure("CustomDate1Value", "CustomDate1Value should not be null if Collection.CustomDate1 is not null.");
 
-                if (collection.CustomDate2.HasValue && !item.CustomDate2Value.HasValue)
+                if (collection.CustomDate2.IsNullOrEmpty() && !item.CustomDate2Value.HasValue)
                     context.AddFailure("CustomDate2Value", "CustomDate2Value should not be null if Collection.CustomDate2 is not null.");
 
-                if (collection.CustomDate3.HasValue && !item.CustomDate3Value.HasValue)
+                if (!collection.CustomDate3.IsNullOrEmpty() && !item.CustomDate3Value.HasValue)
                     context.AddFailure("CustomDate3Value", "CustomDate3Value should not be null if Collection.CustomDate3 is not null.");
             });
     }

@@ -14,30 +14,37 @@ builder.Services.AddControllers(options =>
     options.Conventions.Add(new RouteTokenTransformerConvention(new RouteHelper())));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.ConfigureSwagger();
-
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
-
-builder.Services.AddAutoMapper(typeof(MappingProfile));
-builder.Services.AddMemoryCache();
-builder.Services.AddHttpContextAccessor();
-
-builder.Services.AddControllers().AddJsonOptions(options =>
+builder.Services.AddCors(options =>
 {
-    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("https://example.com", "https://api.example.com")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
 });
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultDbConnection")));
 
 builder.Services.AddJwtService(builder.Configuration);
 builder.Services.AddExceptionHandlers();
 builder.Services.AddProblemDetails();
+builder.Services.AddAuthorization();
+
+builder.Services.AddMemoryCache();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddValidators();
 builder.Services.AddApiServices();
 builder.Services.AddServices();
 
-builder.Services.AddExceptionHandlers();
-
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 
 var app = builder.Build();
 
@@ -48,8 +55,15 @@ app.UseSwaggerUI();
 app.UseExceptionHandler();
 
 app.UseHttpsRedirection();
+app.InjectEnvironmentItems();
+app.MapControllers();
 
-app.UseHttpsRedirection();
-
+app.UseRouting();
+app.UseAuthorization();
+app.UseCors("AllowSpecificOrigin");
+app.UseEndpoints(endpoints =>
+{
+    // Endpoint configuration
+});
 app.Run();
 

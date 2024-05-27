@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Tenge.Domain.Enums;
 using Tenge.Service.Configurations;
 using Tenge.WebApi.ApiServices.Users;
 using Tenge.WebApi.Configurations;
@@ -9,19 +11,9 @@ namespace Tenge.WebApi.Controllers;
 
 public class UsersController(IUserApiService service) : BaseController
 {
-    //[HttpPost]
-    //public async ValueTask<IActionResult> PostAdminAsync(UserCreateModel createModel)
-    //{
-    //    return Ok(new Response
-    //    {
-    //        StatusCode = 200,
-    //        Message = "Ok",
-    //        Data = await service.PostAdminAsync(createModel)
-    //    });
-    //}
-
-    [HttpPost]
-    public async ValueTask<IActionResult> PostNonAdminAsync(UserCreateModel createModel)
+    [CustomAuthorize(nameof(UserRole.Admin))]
+    [HttpPost("admin")]
+    public async ValueTask<IActionResult> PostAdminAsync(UserCreateModel createModel)
     {
         return Ok(new Response
         {
@@ -31,6 +23,19 @@ public class UsersController(IUserApiService service) : BaseController
         });
     }
 
+    [AllowAnonymous]
+    [HttpPost]
+    public async ValueTask<IActionResult> PostNonAdminAsync(UserCreateModel createModel)
+    {
+        return Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Ok",
+            Data = await service.PostNonAdminAsync(createModel)
+        });
+    }
+
+    [CustomAuthorize(nameof(UserRole.Admin), nameof(UserRole.NonAdmin))]
     [HttpPut("{id:long}")]
     public async ValueTask<IActionResult> PutAsync(long id, UserUpdateModel updateModel)
     {
@@ -42,6 +47,7 @@ public class UsersController(IUserApiService service) : BaseController
         });
     }
 
+    [CustomAuthorize(nameof(UserRole.Admin), nameof(UserRole.NonAdmin))]
     [HttpDelete("{id:long}")]
     public async ValueTask<IActionResult> DeleteAsync(long id)
     {
@@ -53,6 +59,7 @@ public class UsersController(IUserApiService service) : BaseController
         });
     }
 
+    [CustomAuthorize(nameof(UserRole.Admin), nameof(UserRole.NonAdmin))]
     [HttpGet("{id:long}")]
     public async ValueTask<IActionResult> GetAsync(long id)
     {
@@ -64,6 +71,7 @@ public class UsersController(IUserApiService service) : BaseController
         });
     }
 
+    [CustomAuthorize(nameof(UserRole.Admin), nameof(UserRole.NonAdmin))]
     [HttpGet]
     public async ValueTask<IActionResult> GetAllAsync(
         [FromQuery] PaginationParams @params,

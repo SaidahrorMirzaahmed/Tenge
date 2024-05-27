@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Tenge.Domain.Enums;
 using Tenge.Service.Configurations;
 using Tenge.WebApi.ApiServices.Categories;
 using Tenge.WebApi.Configurations;
@@ -7,9 +9,10 @@ using Tenge.WebApi.Models.Responses;
 
 namespace Tenge.WebApi.Controllers;
 
+[CustomAuthorize(nameof(UserRole.Admin), nameof(UserRole.NonAdmin))]
 [Route("api/[controller]")]
 [ApiController]
-public class CategoriesController(ICategoryApiService service) : BaseController
+public class CategoriesController(ICategoryApiService service) : ControllerBase
 {
     [HttpPost]
     public async ValueTask<IActionResult> PostAsync(CategoryCreateModel createModel)
@@ -43,7 +46,7 @@ public class CategoriesController(ICategoryApiService service) : BaseController
             Data = await service.DeleteAsync(id)
         });
     }
-
+    [AllowAnonymous]
     [HttpGet("{id:long}")]
     public async ValueTask<IActionResult> GetAsync(long id)
     {
@@ -55,6 +58,7 @@ public class CategoriesController(ICategoryApiService service) : BaseController
         });
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async ValueTask<IActionResult> GetAllAsync(
         [FromQuery] PaginationParams @params,

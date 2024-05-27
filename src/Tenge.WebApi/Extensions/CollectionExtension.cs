@@ -4,14 +4,17 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using Tenge.DataAccess.UnitOfWorks;
 using Tenge.Service.Assets.Service;
+using Tenge.Service.Helpers;
 using Tenge.Service.Services.Categories;
 using Tenge.Service.Services.Collections;
 using Tenge.Service.Services.Items;
 using Tenge.Service.Services.Users;
+using Tenge.WebApi.ApiServices.Accounts;
 using Tenge.WebApi.ApiServices.Categories;
 using Tenge.WebApi.ApiServices.Collections;
 using Tenge.WebApi.ApiServices.Items;
 using Tenge.WebApi.ApiServices.Users;
+using Tenge.WebApi.Configurations;
 using Tenge.WebApi.Middlewares;
 using Tenge.WebApi.Validators.Accounts;
 using Tenge.WebApi.Validators.Categories;
@@ -34,10 +37,12 @@ public static class CollectionExtension
 
     public static void AddApiServices(this IServiceCollection services)
     {
+        services.AddScoped<IAccountApiService, AccountApiService>();
         services.AddScoped<IUserApiService, UserApiService>();
         services.AddScoped<IItemApiService, ItemApiService>();
         services.AddScoped<ICategoryApiService, CategoryApiService>();
         services.AddScoped<ICollectionApiService, CollectionApiService>();
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     }
 
     public static void AddValidators(this IServiceCollection services)
@@ -70,7 +75,19 @@ public static class CollectionExtension
         services.AddExceptionHandler<CustomExceptionHandler>();
         services.AddExceptionHandler<InternalServerExceptionHandler>();
     }
-
+    public static void InjectEnvironmentItems(this WebApplication app)
+    {
+        HttpContextHelper.ContextAccessor = app.Services.GetRequiredService<IHttpContextAccessor>();
+        EnvironmentHelper.WebRootPath = Path.GetFullPath("wwwroot");
+        EnvironmentHelper.JWTKey = app.Configuration.GetSection("JWT:Key").Value;
+        EnvironmentHelper.TokenLifeTimeInHours = app.Configuration.GetSection("JWT:LifeTime").Value;
+        EnvironmentHelper.EmailAddress = app.Configuration.GetSection("Email:EmailAddress").Value;
+        EnvironmentHelper.EmailPassword = app.Configuration.GetSection("Email:Password").Value;
+        EnvironmentHelper.SmtpPort = app.Configuration.GetSection("Email:Port").Value;
+        EnvironmentHelper.SmtpHost = app.Configuration.GetSection("Email:Host").Value;
+        EnvironmentHelper.PageSize = Convert.ToInt32(app.Configuration.GetSection("PaginationParams:PageSize").Value);
+        EnvironmentHelper.PageIndex = Convert.ToInt32(app.Configuration.GetSection("PaginationParams:PageIndex").Value);
+    }
     public static void AddJwtService(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddAuthentication(x =>
