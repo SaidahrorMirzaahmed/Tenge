@@ -4,6 +4,7 @@ using Tenge.Domain.Enums;
 using Tenge.Service.Configurations;
 using Tenge.WebApi.ApiServices.Collections;
 using Tenge.WebApi.Configurations;
+using Tenge.WebApi.Models.Assets;
 using Tenge.WebApi.Models.Category;
 using Tenge.WebApi.Models.Collections;
 using Tenge.WebApi.Models.Responses;
@@ -72,6 +73,44 @@ public class CollectionsController(ICollectionApiService service) : BaseControll
             StatusCode = 200,
             Message = "Ok",
             Data = await service.GetAllAsync(@params, filter, search)
+        });
+    }
+
+    [AllowAnonymous]
+    [HttpGet("{id:long}/user-id")]
+    public async ValueTask<IActionResult> GetAllByUserIdAsync(
+        long id,
+        [FromQuery] PaginationParams @params,
+        [FromQuery] Filter filter,
+        [FromQuery] string search = null)
+    {
+        return Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Ok",
+            Data = await service.GetbyUserIdAsync(id,@params, filter, search)
+        });
+    }
+
+    [HttpPost("{id:long}/files/upload")]
+    public async Task<IActionResult> PictureUploadAsync(long id, AssetCreateModel asset)
+    {
+        return Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Ok",
+            Data = await service.UploadPictureAsync(id, asset)
+        });
+    }
+
+    [HttpDelete("{id:long}/files/delete")]
+    public async Task<IActionResult> PictureDeleteAsync(long id)
+    {
+        return Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Success",
+            Data = await service.DeletePictureAsync(id)
         });
     }
 }

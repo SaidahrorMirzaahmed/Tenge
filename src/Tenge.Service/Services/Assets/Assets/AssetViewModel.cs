@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Tenge.Service.Configurations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Tenge.WebApi.Models.Assets;
+namespace Tenge.Service.Services.Assets.Assets;
 
 public class AssetViewModel
 {
-    public IFormFile File { get; set; }
-    public FileType FileType { get; set; }
+    public long Id { get; set; }
+    public string Name { get; set; }
+    public string Path {  get; set; }
 }

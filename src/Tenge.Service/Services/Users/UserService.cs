@@ -93,7 +93,7 @@ public class UserService(IUnitOfWork unitOfWork, IMemoryCache memoryCache) : IUs
         existUser.FirstName = user.FirstName;
         existUser.UpdatedAt = DateTime.UtcNow;
         existUser.UpdatedByUserId = HttpContextHelper.UserId;
-
+        await unitOfWork.SaveAsync();
         return existUser;
     }
 
@@ -169,12 +169,12 @@ public class UserService(IUnitOfWork unitOfWork, IMemoryCache memoryCache) : IUs
         return true;
     }
 
-    public async ValueTask<bool> QuitAdminAsync()
+    public async ValueTask<string> QuitAdminAsync()
     {
         var existUser =await unitOfWork.Users.SelectAsync(u => u.Id == HttpContextHelper.UserId);
         existUser.Role = Domain.Enums.UserRole.NonAdmin;
         await unitOfWork.SaveAsync();
-        return true;
+        return AuthHelper.GenerateToken(existUser);
     }
     //private async Task LogoutUserAndRefreshTokenAsync(User existUser)
     //{

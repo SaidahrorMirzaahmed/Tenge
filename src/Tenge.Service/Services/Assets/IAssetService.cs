@@ -1,4 +1,5 @@
-﻿using Tenge.WebApi.Models.Assets;
+﻿using Tenge.Service.Services.Assets.Assets;
+using Tenge.WebApi.Models.Assets;
 
 namespace Tenge.Service.Assets.Service;
 

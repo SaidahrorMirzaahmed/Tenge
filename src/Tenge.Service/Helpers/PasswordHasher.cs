@@ -4,8 +4,7 @@ public static class PasswordHasher
 {
     public static string Hash(string password)
     {
-        var salt = BCrypt.Net.BCrypt.GenerateSalt(12);
-        return BCrypt.Net.BCrypt.HashPassword(password, salt);
+        return BCrypt.Net.BCrypt.HashPassword(password, 12);
     }
 
     public static bool Verify(string password, string passwordHash)

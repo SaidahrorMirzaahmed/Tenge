@@ -1,4 +1,5 @@
 ﻿using Tenge.Domain.Entities;
+using Tenge.Service.Services.Assets.Assets;
 using Tenge.WebApi.Models.Assets;
 using Tenge.WebApi.Models.Category;
 using Tenge.WebApi.Models.Users;
@@ -7,6 +8,7 @@ namespace Tenge.WebApi.Models.Collections;
 
 public class CollectionViewModel
 {
+    public long Id { get; set; }    
     public string Name { get; set; }
     public string Description { get; set; }
     public AssetViewModel Picture { get; set; }

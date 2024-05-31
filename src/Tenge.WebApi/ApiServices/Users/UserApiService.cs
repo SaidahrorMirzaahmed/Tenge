@@ -61,9 +61,8 @@ public class UserApiService(
         return mapper.Map<UserViewModel>(user);
     }
 
-    public async ValueTask<bool> QuitAdminAsync()
+    public async ValueTask<string> QuitAdminAsync()
     {
-        await userService.QuitAdminAsync();
-        return true;
+        return await userService.QuitAdminAsync(); ;
     }
 }

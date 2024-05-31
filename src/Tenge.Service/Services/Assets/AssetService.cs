@@ -4,14 +4,16 @@ using Tenge.Domain.Entities;
 using Tenge.Service.Exceptions;
 using Tenge.Service.Extensions;
 using Tenge.Service.Helpers;
+using Tenge.Service.Services.Assets.Assets;
 using Tenge.WebApi.Models.Assets;
 
 namespace Tenge.Service.Assets.Service;
 
-public class AssetService(IUnitOfWork unitOfWork, IMapper mapper) : IAssetService
+public class AssetService(IUnitOfWork unitOfWork, IMapper mapper, FileModelValidator validations) : IAssetService
 {
     public async ValueTask<AssetViewModel> UploadAsync(AssetCreateModel model)
     {
+        await validations.ValidateAsync(model);
         var assetData = await FileHelper.CreateFileAsync(model.File, model.FileType);
         var asset = new Asset()
         {

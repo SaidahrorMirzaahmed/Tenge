@@ -17,6 +17,6 @@ public interface IUserService
     ValueTask<bool> SendCodeAsync(string email);
     ValueTask<bool> ConfirmCodeAsync(string email, string code);
     ValueTask<User> ChangePasswordAsync(string email, string oldPassword, string newPassword);
-    ValueTask<bool> QuitAdminAsync();
+    ValueTask<string> QuitAdminAsync();
 }
 

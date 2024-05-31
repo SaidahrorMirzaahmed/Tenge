@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using Tenge.DataAccess.UnitOfWorks;
 using Tenge.Service.Assets.Service;
 using Tenge.Service.Helpers;
+using Tenge.Service.Services.Assets.Assets;
 using Tenge.Service.Services.Categories;
 using Tenge.Service.Services.Collections;
 using Tenge.Service.Services.Items;
@@ -16,6 +18,7 @@ using Tenge.WebApi.ApiServices.Items;
 using Tenge.WebApi.ApiServices.Users;
 using Tenge.WebApi.Configurations;
 using Tenge.WebApi.Middlewares;
+using Tenge.WebApi.Models.Assets;
 using Tenge.WebApi.Validators.Accounts;
 using Tenge.WebApi.Validators.Categories;
 using Tenge.WebApi.Validators.Collections;
@@ -47,6 +50,7 @@ public static class CollectionExtension
 
     public static void AddValidators(this IServiceCollection services)
     {
+        services.AddTransient<FileModelValidator>();
         services.AddTransient<UserCreateModelValidator>();
         services.AddTransient<UserUpdateModelValidator>();
 

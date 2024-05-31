@@ -13,5 +13,5 @@ public interface IUserApiService
     ValueTask<UserViewModel> GetAsync(long id);
     ValueTask<IEnumerable<UserViewModel>> GetAllAsync(PaginationParams @params, Filter filter, string search = null);
     ValueTask<UserViewModel> ChangePasswordAsync(UserChangePasswordModel changePasswordModel);
-    ValueTask<bool> QuitAdminAsync();
+    ValueTask<string> QuitAdminAsync();
 }

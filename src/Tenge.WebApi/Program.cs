@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("https://example.com", "https://api.example.com")
+            builder.WithOrigins("http://nabeey.uz", "http://localhost:5173", "http://localhost:8080", "http://sayidahror.uz")
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
@@ -38,8 +38,8 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddValidators();
-builder.Services.AddApiServices();
 builder.Services.AddServices();
+builder.Services.AddApiServices();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
@@ -57,13 +57,11 @@ app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.InjectEnvironmentItems();
 app.MapControllers();
+app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthorization();
 app.UseCors("AllowSpecificOrigin");
-app.UseEndpoints(endpoints =>
-{
-    // Endpoint configuration
-});
+app.UseAuthorization();
+
 app.Run();
 

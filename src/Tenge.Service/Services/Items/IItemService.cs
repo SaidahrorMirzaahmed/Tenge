@@ -16,4 +16,5 @@ public interface IItemService
     ValueTask<bool> DeleteAsync(long id, bool isAdmin);
     ValueTask<Item> GetAsync(long id);
     ValueTask<IEnumerable<Item>> GetAll(PaginationParams @params, Filter filter, string search = null);
+    ValueTask<IEnumerable<Item>> GetItemsByCollectionId(long id);
 }

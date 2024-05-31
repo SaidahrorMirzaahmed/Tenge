@@ -15,7 +15,13 @@ public class ItemService(IUnitOfWork unitOfWork) : IItemService
     {
         var existCollection = await unitOfWork.Collections.SelectAsync(u => u.Id == item.CollectionId, includes: ["User"])
             ?? throw new NotFoundException($"Collection with this Id is not found = {item.CollectionId}");
-            
+        var items = await unitOfWork.Items.SelectAsQueryable(i=>i.CollectionId == item.CollectionId).ToListAsync();
+
+        var exist = items.Any(i => i.Name == item.Name && !i.IsDeleted);
+
+        if (exist)
+            throw new AlreadyExistException("Item with this name already exists");
+        
         if (isAdmin || item.Collection.UserId == HttpContextHelper.UserId)
         {
             item.CreatedByUserId = HttpContextHelper.UserId;
@@ -67,6 +73,12 @@ public class ItemService(IUnitOfWork unitOfWork) : IItemService
            ?? throw new NotFoundException($"Item with this Id is not found Id= {id}");
 
         return existItem;
+    }
+
+    public async ValueTask<IEnumerable<Item>> GetItemsByCollectionId(long id)
+    {
+        var items = await unitOfWork.Items.SelectAsQueryable(i => i.CollectionId == id && !i.IsDeleted, includes: ["Picture", "Collection"]).ToListAsync();
+        return items;
     }
 
     public async ValueTask<Item> UpdateAsync(long id, Item item, bool isAdmin)

@@ -60,6 +60,197 @@ namespace Tenge.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Assets");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3336),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "To Kill a Mockingbird Cover",
+                            Path = "Pictures\\Coin (1).jpeg"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3341),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "1984 Cover",
+                            Path = "Pictures\\Coin (2).jpeg"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3342),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Ancient Roman Coin",
+                            Path = "Pictures\\Coin (3).jpeg"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3343),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Medieval English Coin",
+                            Path = "Pictures\\Coin (4).jpeg"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3344),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Pride and Prejudice Cover",
+                            Path = "Pictures\\Coin (5).jpeg"
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3345),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Moby Dick Cover",
+                            Path = "Pictures\\Coin (6).jpeg"
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3346),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Great Expectations Cover",
+                            Path = "Pictures\\Coin (7).jpeg"
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3346),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "War and Peace Cover",
+                            Path = "Pictures\\Coin (8).jpeg"
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3347),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Ulysses Cover",
+                            Path = "Pictures\\Coin (9).jpeg"
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3349),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "The Odyssey Cover",
+                            Path = "Pictures\\Book (1).jpeg"
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3379),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 11 Image",
+                            Path = "Pictures\\Book (1).jpeg"
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3380),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 12 Image",
+                            Path = "Pictures\\Book (2).jpeg"
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3381),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 13 Image",
+                            Path = "Pictures\\Book (3).jpeg"
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3382),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 14 Image",
+                            Path = "Pictures\\Book (4).jpeg"
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3383),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 15 Image",
+                            Path = "Pictures\\Book (5).jpeg"
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3384),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 16 Image",
+                            Path = "Pictures\\Book (6).jpeg"
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3384),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 16 Image",
+                            Path = "Pictures\\Stamp (1).jpeg"
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3385),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 16 Image",
+                            Path = "Pictures\\Stamp (2).jpeg"
+                        },
+                        new
+                        {
+                            Id = 19L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3386),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 16 Image",
+                            Path = "Pictures\\Stamp (3).jpeg"
+                        },
+                        new
+                        {
+                            Id = 20L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3387),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 16 Image",
+                            Path = "Pictures\\Stamp (4).jpeg"
+                        },
+                        new
+                        {
+                            Id = 21L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3388),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coin 16 Image",
+                            Path = "Pictures\\Stamp (5).jpeg"
+                        });
                 });
 
             modelBuilder.Entity("Tenge.Domain.Entities.Category", b =>
@@ -97,6 +288,32 @@ namespace Tenge.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3310),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Books"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3312),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Coins"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3312),
+                            CreatedByUserId = 0L,
+                            IsDeleted = false,
+                            Name = "Stamps"
+                        });
                 });
 
             modelBuilder.Entity("Tenge.Domain.Entities.Collection", b =>
@@ -179,6 +396,78 @@ namespace Tenge.DataAccess.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Collections");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CategoryId = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3433),
+                            CreatedByUserId = 0L,
+                            CustomDate1 = "Published Year",
+                            CustomString1 = "Shelf A",
+                            Description = "A collection of classic fiction books",
+                            IsDeleted = false,
+                            Name = "Fiction Books Collection",
+                            PictureId = 11L,
+                            UserId = 1L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CategoryId = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3440),
+                            CreatedByUserId = 0L,
+                            CustomDate1 = "Discovery Year",
+                            CustomString2 = "Drawer B",
+                            Description = "A collection of ancient historical coins",
+                            IsDeleted = false,
+                            Name = "Historical Coins Collection",
+                            PictureId = 2L,
+                            UserId = 1L
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CategoryId = 3L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3442),
+                            CreatedByUserId = 0L,
+                            CustomDate1 = "Year of Issue",
+                            CustomString1 = "Album C",
+                            Description = "A collection of rare classic stamps",
+                            IsDeleted = false,
+                            Name = "Classic Stamps Collection",
+                            PictureId = 19L,
+                            UserId = 1L
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CategoryId = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3444),
+                            CreatedByUserId = 0L,
+                            CustomDate1 = "Publication Year",
+                            CustomString1 = "Bookshelf D",
+                            Description = "A collection of contemporary novels",
+                            IsDeleted = false,
+                            Name = "Modern Books Collection",
+                            PictureId = 14L,
+                            UserId = 1L
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CategoryId = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3446),
+                            CreatedByUserId = 0L,
+                            CustomDate1 = "Minting Year",
+                            CustomString2 = "Display Case E",
+                            Description = "A collection of rare and valuable coins",
+                            IsDeleted = false,
+                            Name = "Rare Coins Collection",
+                            PictureId = 1L,
+                            UserId = 1L
+                        });
                 });
 
             modelBuilder.Entity("Tenge.Domain.Entities.Item", b =>
@@ -256,6 +545,260 @@ namespace Tenge.DataAccess.Migrations
                     b.HasIndex("PictureId");
 
                     b.ToTable("Items");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CollectionId = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3468),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1960, 7, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Harper Lee",
+                            CustomString3Value = "Classic",
+                            Description = "A novel by Harper Lee published in 1960",
+                            IsDeleted = false,
+                            Name = "To Kill a Mockingbird",
+                            PictureId = 16L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CollectionId = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3480),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1949, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "George Orwell",
+                            CustomString3Value = "Dystopian",
+                            Description = "A novel by George Orwell published in 1949",
+                            IsDeleted = false,
+                            Name = "1984",
+                            PictureId = 15L
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CollectionId = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3484),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1813, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Jane Austen",
+                            CustomString3Value = "Romance",
+                            Description = "A novel by Jane Austen published in 1813",
+                            IsDeleted = false,
+                            Name = "Pride and Prejudice",
+                            PictureId = 14L
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CollectionId = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3487),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1851, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Herman Melville",
+                            CustomString3Value = "Adventure",
+                            Description = "A novel by Herman Melville published in 1851",
+                            IsDeleted = false,
+                            Name = "Moby Dick",
+                            PictureId = 13L
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CollectionId = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3489),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1861, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Charles Dickens",
+                            CustomString3Value = "Drama",
+                            Description = "A novel by Charles Dickens published in 1861",
+                            IsDeleted = false,
+                            Name = "Great Expectations",
+                            PictureId = 12L
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CollectionId = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3490),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Roman Empire",
+                            CustomString2Value = "Bronze",
+                            Description = "A coin from the Roman Empire",
+                            IsDeleted = false,
+                            Name = "Ancient Roman Coin",
+                            PictureId = 3L
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CollectionId = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3493),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1888, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "England",
+                            CustomString2Value = "Silver",
+                            Description = "A coin from medieval England",
+                            IsDeleted = false,
+                            Name = "Medieval English Coin",
+                            PictureId = 4L
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CollectionId = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3495),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1987, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Greece",
+                            CustomString2Value = "Gold",
+                            Description = "A coin from ancient Greece",
+                            IsDeleted = false,
+                            Name = "Ancient Greek Coin",
+                            PictureId = 5L
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CollectionId = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3497),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Byzantine Empire",
+                            CustomString2Value = "Gold",
+                            Description = "A coin from the Byzantine Empire",
+                            IsDeleted = false,
+                            Name = "Byzantine Coin",
+                            PictureId = 6L
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CollectionId = 2L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3499),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1899, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Viking Age",
+                            CustomString2Value = "Silver",
+                            Description = "A coin from the Viking Age",
+                            IsDeleted = false,
+                            Name = "Viking Coin",
+                            PictureId = 7L
+                        },
+                        new
+                        {
+                            Id = 11L,
+                            CollectionId = 3L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3501),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1840, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "United Kingdom",
+                            CustomString3Value = "Postage Stamp",
+                            Description = "A postage stamp issued in the United Kingdom in 1840",
+                            IsDeleted = false,
+                            Name = "Penny Black",
+                            PictureId = 18L
+                        },
+                        new
+                        {
+                            Id = 12L,
+                            CollectionId = 3L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3503),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1918, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "United States",
+                            CustomString3Value = "Postage Stamp",
+                            Description = "A United States postage stamp with an airplane printed upside-down",
+                            IsDeleted = false,
+                            Name = "Inverted Jenny",
+                            PictureId = 17L
+                        },
+                        new
+                        {
+                            Id = 13L,
+                            CollectionId = 3L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3505),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1856, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "British Guiana",
+                            CustomString3Value = "Postage Stamp",
+                            Description = "One of the rarest postage stamps in the world",
+                            IsDeleted = false,
+                            Name = "British Guiana 1c Magenta",
+                            PictureId = 18L
+                        },
+                        new
+                        {
+                            Id = 14L,
+                            CollectionId = 4L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3506),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1997, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "J.K. Rowling",
+                            CustomString3Value = "Fantasy",
+                            Description = "A novel by J.K. Rowling published in 1997",
+                            IsDeleted = false,
+                            Name = "Harry Potter and the Philosopher's Stone",
+                            PictureId = 12L
+                        },
+                        new
+                        {
+                            Id = 15L,
+                            CollectionId = 4L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3552),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(2003, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "Dan Brown",
+                            CustomString3Value = "Mystery",
+                            Description = "A novel by Dan Brown published in 2003",
+                            IsDeleted = false,
+                            Name = "The Da Vinci Code",
+                            PictureId = 16L
+                        },
+                        new
+                        {
+                            Id = 16L,
+                            CollectionId = 5L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3554),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1933, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "United States",
+                            CustomString2Value = "Gold",
+                            Description = "A twenty-dollar gold coin of the United States minted in 1933",
+                            IsDeleted = false,
+                            Name = "Double Eagle",
+                            PictureId = 2L
+                        },
+                        new
+                        {
+                            Id = 17L,
+                            CollectionId = 5L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3556),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1787, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "United States",
+                            CustomString2Value = "Gold",
+                            Description = "An American gold coin produced by Ephraim Brasher in 1787",
+                            IsDeleted = false,
+                            Name = "Brasher Doubloon",
+                            PictureId = 3L
+                        },
+                        new
+                        {
+                            Id = 18L,
+                            CollectionId = 5L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3558),
+                            CreatedByUserId = 0L,
+                            CustomDate1Value = new DateTime(1794, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CustomString1Value = "United States",
+                            CustomString2Value = "Silver",
+                            Description = "An American silver dollar coin issued in 1794 and 1795",
+                            IsDeleted = false,
+                            Name = "Flowing Hair Dollar",
+                            PictureId = 9L
+                        });
                 });
 
             modelBuilder.Entity("Tenge.Domain.Entities.User", b =>
@@ -305,6 +848,20 @@ namespace Tenge.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedAt = new DateTime(2024, 5, 30, 18, 56, 31, 209, DateTimeKind.Utc).AddTicks(3158),
+                            CreatedByUserId = 0L,
+                            Email = "admin@example.com",
+                            FirstName = "Admin",
+                            IsDeleted = false,
+                            LastName = "User",
+                            Password = "$2a$12$1mKXg7pTk..WAWEEdiFZr.F7mF2K7zMkCxcIuAgKqtUzMv70ikQvm",
+                            Role = 1
+                        });
                 });
 
             modelBuilder.Entity("Tenge.Domain.Entities.Collection", b =>

@@ -7,7 +7,6 @@ public class ItemCreateModel
     public string Name { get; set; }
     public string Description { get; set; }
     public long CollectionId {  get; set; }
-    public long PictureId { get; set; }
     public string? CustomString1Value { get; set; }
     public string? CustomString2Value { get; set; }
     public string? CustomString3Value { get; set; }

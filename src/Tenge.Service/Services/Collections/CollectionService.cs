@@ -15,6 +15,10 @@ public class CollectionService(IUnitOfWork unitOfWork) : ICollectionService
     {
         var existCategory = await unitOfWork.Categories.SelectAsync(c => c.Id == collection.CategoryId)
             ?? throw new NotFoundException($"Category with this id is not found={collection.CategoryId}");
+        var existCollection = await unitOfWork.Collections.SelectAsync(x => x.Name == collection.Name && x.UserId == collection.UserId && !x.IsDeleted);
+        if (existCollection is not null)
+            throw new AlreadyExistException("U already have colection with this name");
+
         var user = await unitOfWork.Users.SelectAsync(c => c.Id == collection.UserId);
 
         collection.CreatedByUserId = HttpContextHelper.UserId;
